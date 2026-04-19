@@ -2,7 +2,6 @@ import sys
 import os
 from fastapi import FastAPI, Request
 from app.api.v1 import employee, category, common, car, user
-# 添加 sky-common-python 和 sky-pojo-python 到 Python 路径
 from common.utils.redis_util import redis_util
 
 
