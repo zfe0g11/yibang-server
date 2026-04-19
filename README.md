@@ -22,48 +22,50 @@
 ## 三、项目结构
 
 ```
-d:\AI开发\yibang-server-python\
+\yibang-server-python\
 ├── app/                     # 主应用目录
-│   ├── crud/               # 数据操作层
-│   │   ├── car.py          # 车辆CRUD
-│   │   ├── car_mortgage.py # 车辆抵押CRUD
-│   │   ├── category.py     # 分类CRUD
-│   │   ├── employee.py     # 员工CRUD
-│   │   └── user.py         # 用户CRUD
-│   ├── models/             # 数据库模型
-│   │   ├── Basemodel.py    # 基础模型
-│   │   ├── car.py          # 车辆模型
-│   │   ├── car_mortgage.py # 车辆抵押模型
-│   │   ├── category.py     # 分类模型
-│   │   ├── employee.py     # 员工模型
-│   │   └── user.py         # 用户模型
-│   ├── routes/             # API路由
-│   │   ├── car-mortgage.py # 车辆抵押API
-│   │   ├── car.py          # 车辆API
-│   │   ├── category.py     # 分类API
-│   │   ├── common.py       # 通用API
-│   │   ├── employee.py     # 员工API
-│   │   └── user.py         # 用户API
-│   ├── schemas/            # 数据验证模型
-│   │   └── employee.py     # 员工验证模型
-│   ├── sky_common/         # 通用工具库
-│   │   ├── constant/       # 常量定义
-│   │   ├── context/        # 上下文管理
-│   │   ├── exception/      # 异常处理
-│   │   ├── result/         # 统一返回结果
-│   │   └── utils/          # 工具类
-│   ├── sky_pojo/           # 数据传输对象
-│   │   ├── dto/            # 请求DTO
-│   │   ├── entity/         # 实体类
-│   │   └── vo/             # 响应VO
-│   ├── utils/              # 项目工具类
-│   │   ├── auth.py         # 认证工具
-│   │   └── jwt_util.py     # JWT工具
-│   ├── database.py         # 数据库配置
-│   └── main.py             # 应用入口
-├── .env                    # 环境变量配置
-├── requirements.txt        # 依赖清单
-└── README.md               # 项目文档
+│   ├── api/                 # API路由
+│   │   └── v1/              # 版本1
+│   │       ├── car.py       # 车辆API
+│   │       ├── car-mortgage.py # 车辆抵押API
+│   │       ├── category.py  # 分类API
+│   │       ├── common.py    # 通用API
+│   │       ├── employee.py  # 员工API
+│   │       └── user.py      # 用户API
+│   ├── core/                # 核心配置
+│   │   └── database.py      # 数据库配置
+│   ├── crud/                # 数据操作层
+│   │   ├── car.py           # 车辆CRUD
+│   │   ├── car_mortgage.py  # 车辆抵押CRUD
+│   │   ├── category.py      # 分类CRUD
+│   │   ├── employee.py      # 员工CRUD
+│   │   └── user.py          # 用户CRUD
+│   ├── models/              # 数据库模型
+│   │   ├── Basemodel.py     # 基础模型
+│   │   ├── car.py           # 车辆模型
+│   │   ├── car_mortgage.py  # 车辆抵押模型
+│   │   ├── category.py      # 分类模型
+│   │   ├── employee.py      # 员工模型
+│   │   └── user.py          # 用户模型
+│   ├── schemas/             # 数据验证模型
+│   │   └── employee.py      # 员工验证模型
+│   ├── __init__.py
+│   └── main.py              # 应用入口
+├── common/                  # 通用组件
+│   ├── constant/            # 常量定义
+│   ├── context/             # 上下文管理
+│   ├── dto/                 # 数据传输对象
+│   ├── entity/              # 实体类
+│   ├── enumeration/         # 枚举类型
+│   ├── exception/           # 异常处理
+│   ├── json/                # JSON工具
+│   ├── properties/          # 属性配置
+│   ├── result/              # 统一返回结果
+│   ├── utils/               # 工具类
+│   └── vo/                  # 视图对象
+├── .env                     # 环境变量配置
+├── requirements.txt         # 依赖清单
+└── README.md                # 项目文档
 ```
 
 ## 四、核心功能模块
@@ -112,11 +114,11 @@ pip install -r requirements.txt
 创建`.env`文件：
 ```env
 # 数据库配置
-DATABASE_URL=mysql+pymysql://root:admintoor@172.23.216.43/Xxk_yibang?charset=utf8mb4
+DATABASE_URL=mysql+pymysql://root:admintoor@host/database?charset=utf8mb4
 
 # Redis配置
-REDIS_HOST=172.23.216.43
-REDIS_PORT=6379
+REDIS_HOST=
+REDIS_PORT=
 REDIS_DB=0
 REDIS_PASSWORD=
 
@@ -128,7 +130,7 @@ JWT_EXPIRE_MINUTES=1440
 
 ### 4. 启动服务
 ```bash
-cd d:\AI开发\yibang-server-python
+cd yibang-server-python
 python -m uvicorn app.main:app --host 0.0.0.0 --port 8080 --reload
 ```
 
