@@ -1,11 +1,17 @@
 import sys
 import os
 from fastapi import FastAPI, Request
-from app.api.v1 import employee, category, common, car, user
+from app.api.v1 import employee, category, common, car, user, chat, rag
 from common.utils.redis_util import redis_util
 
 
 from fastapi.middleware.cors import CORSMiddleware
+from app.crud.chat import get_rag_chain
+from app.crud.rag_crud import get_embeddings,get_doc_processor,get_vector_store
+get_doc_processor()  # 预加载文档处理器
+get_embeddings()  # 预加载embedding模型
+get_vector_store()  # 预加载向量存储
+get_rag_chain()  # 预加载RAG链
 
 
 app = FastAPI(
@@ -57,6 +63,8 @@ app.include_router(common.router, prefix="/admin", tags=["通用管理"])
 app.include_router(car.router, prefix="/admin", tags=["车辆管理"])
 app.include_router(category.router, prefix="/admin",tags=["抵押审核"])
 app.include_router(user.router,prefix="/user", tags=["用户端"])
+app.include_router(chat.router, prefix="/user", tags=["AI聊天"])
+app.include_router(rag.router, prefix="/admin", tags=["知识库构建"])
 
 @app.get("/health", tags=["健康检查"])
 async def health_check():

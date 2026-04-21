@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, DateTime
 from sqlalchemy.sql import func
-from app.database import Base
+from app.core.database import Base
 from app.models.Basemodel import BaseModel,before_insert_listener,before_update_listener
 from sqlalchemy import event
 class Category(BaseModel):

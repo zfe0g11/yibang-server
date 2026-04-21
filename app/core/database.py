@@ -1,9 +1,9 @@
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-
+from config.ai_config import ai_config
 # 数据库配置
-SQLALCHEMY_DATABASE_URL = "mysql+pymysql://root:admintoor@172.23.216.43/Xxk_yibang?charset=utf8mb4"
+SQLALCHEMY_DATABASE_URL = ai_config.MYSQL_URL
 
 # 创建引擎
 engine = create_engine(SQLALCHEMY_DATABASE_URL)

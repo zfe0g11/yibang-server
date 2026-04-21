@@ -1,7 +1,13 @@
 import oss2
 from typing import Optional
 
+import os
+
 # 阿里云 OSS 配置
+ALI_OSS_ENDPOINT = os.getenv("ALI_OSS_ENDPOINT")
+ALI_OSS_ACCESS_KEY_ID = os.getenv("ALI_OSS_ACCESS_KEY_ID")
+ALI_OSS_ACCESS_KEY_SECRET = os.getenv("ALI_OSS_ACCESS_KEY_SECRET")
+ALI_OSS_BUCKET_NAME = os.getenv("ALI_OSS_BUCKET_NAME")
 
 class AliOssUtil:
     def __init__(self, endpoint: str = ALI_OSS_ENDPOINT, access_key_id: str = ALI_OSS_ACCESS_KEY_ID, 

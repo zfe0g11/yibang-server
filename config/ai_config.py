@@ -1,0 +1,34 @@
+import os
+
+class AIConfig:
+    # QDRANT 向量数据库配置
+    QDRANT_URL = os.getenv("QDRANT_URL")
+    QDRANT_COLLECTION_NAME = os.getenv("QDRANT_COLLECTION_NAME")
+    QDRANT_SUMMARY_COLLECTION_NAME = os.getenv("QDRANT_SUMMARY_COLLECTION_NAME")
+    SQL_XXK_YIBANG_COLLECTION_NAME = os.getenv("SQL_XXK_YIBANG_COLLECTION_NAME")
+
+    # MySQL数据库配置
+    MYSQL_URL = os.getenv("DATABASE_URL")
+    MYSQL_HOST_URL = os.getenv("MYSQL_HOST_URL")
+    MYSQL_USER = os.getenv("MYSQL_USER")
+    MYSQL_PASSWORD = os.getenv("MYSQL_PASSWORD")
+    MYSQL_DATABASE = os.getenv("MYSQL_DATABASE")
+
+    # 文档处理配置
+    DOCUMENT_PATH_DIR = os.getenv("DOCUMENT_PATH_DIR")
+    DELIMITER_BASED_CHUNKING_SIZE = int(os.getenv("DELIMITER_BASED_CHUNKING_SIZE", "200"))
+    DELIMITER_BASED_CHUNK_OVERLAP = int(os.getenv("DELIMITER_BASED_CHUNK_OVERLAP", "40"))
+    CHUNK_SIZE = int(os.getenv("CHUNK_SIZE", "1000"))
+    CHUNK_OVERLAP = int(os.getenv("CHUNK_OVERLAP", "200"))
+
+    # LLM模型配置
+    LLM_MODEL = os.getenv("LLM_MODEL")
+    XUNFEI_API_BASE = os.getenv("XUNFEI_API_BASE")
+    XUNFEI_API_KEY = os.getenv("XUNFEI_API_KEY")
+
+    # 嵌入模型配置
+    EMBEDDING_LLM_MODEL = os.getenv("EMBEDDING_LLM_MODEL")
+    EMBEDDING_XUNFEI_API_BASE = os.getenv("EMBEDDING_XUNFEI_API_BASE")
+    EMBEDDING_XUNFEI_API_KEY = os.getenv("EMBEDDING_XUNFEI_API_KEY")
+
+ai_config = AIConfig()
